@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.dao.impl.UserDao;
+import com.hcl.model.Stock;
 import com.hcl.model.User;
 import com.hcl.service.UserService;
 
@@ -31,6 +32,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void updateUser(User user) {
 		userDao.updateUser(user);
+	}
+
+	@Override
+	public int addStockCategory(Stock stock) {
+		return userDao.addStockCategory(stock);
 	}
 
 }

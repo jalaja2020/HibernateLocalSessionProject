@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hcl.dao.IUserDao;
+import com.hcl.model.Stock;
 import com.hcl.model.User;
 @Repository
 public class UserDao implements IUserDao{
@@ -34,5 +35,11 @@ public class UserDao implements IUserDao{
 	public void updateUser(User user) {
 		getSession().saveOrUpdate(user);
 		
+	}
+
+	@Override
+	public int addStockCategory(Stock stock) {
+		getSession().persist(stock);
+		return Objects.nonNull(stock) && Objects.nonNull(stock.getStockId())?stock.getStockId() :null;
 	}
 }
